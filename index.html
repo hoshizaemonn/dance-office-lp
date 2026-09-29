@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow"><!-- 確認用URLのため。本番公開時はこの行を削除 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dance Office｜Kids &amp; Junior Dance school（田川・直方・飯塚・宮若）</title>
+<meta name="description" content="Dance Office は未就学児から高校生までを中心としたダンススクール。全校専用スタジオ完備。基礎を徹底指導し、レベル別・年齢別のクラスで一人ひとりの成長をサポートします。無料体験受付中。">
+<meta name="format-detection" content="telephone=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/fv.jpg">
+<style>
+/* 新ゴ（ShinGo）ローカルフォント定義：端末に入っていれば使用、無ければ Noto Sans JP */
+@font-face { font-family:'ShinGo'; src:local('PUDShinGoPr6N-Regular'),local('A-OTF-ShinGoPr6N-Regular'),local('ShinGoPr6N-Regular'); font-weight:400 500; font-display:swap; }
+@font-face { font-family:'ShinGo'; src:local('PUDShinGoPr6N-DeBold'),local('A-OTF-ShinGoPr6N-DeBold'),local('ShinGoPr6N-DeBold'); font-weight:700; font-display:swap; }
+@font-face { font-family:'ShinGo'; src:local('PUDShinGoPr6N-Bold'),local('A-OTF-ShinGoPr6N-Bold'),local('ShinGoPr6N-Bold'); font-weight:800; font-display:swap; }
+
+/* =====================================================================
+   寸法ルール：カンプ幅 300pt = 画面幅。 --u が「カンプの1pt」。
+   すべての寸法は calc(var(--u) * カンプ上のpt値) で指定している。
+   ===================================================================== */
+:root {
+  --u: calc(min(100vw, 480px) / 300);
+  --black: #151313;      /* 黒地（FV下〜GUEST）実測 */
+  --black2: #231f20;     /* 黒地（SNS・フッター）実測 */
+  --paper: #fdfefe;       /* 破れ紙の白 実測 */
+  --ink: #231f20;        /* 本文の墨 */
+  --ink2: #191b1f;       /* LESSON見出しまわりの墨 実測 */
+  --cyan: #2ebad1;       /* タブ・曜日バッジ・枠線 実測 */
+  --cyan-text: #2ebace;  /* シアン文字 実測 */
+  --sns-thumb: #4f4c4d;  /* Instagram枠の中のグレー 実測 */
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%; background:#000; }
+body { background:#000; color:var(--ink); font-family:'ShinGo','Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif; font-weight:500; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+img { display:block; border:0; }
+a { color:inherit; text-decoration:none; -webkit-tap-highlight-color:transparent; }
+ul { list-style:none; }
+button { background:none; border:0; padding:0; font:inherit; color:inherit; }
+.page { position:relative; width:100%; max-width:480px; margin:0 auto; background:#fff; overflow:hidden; }
+.sec { position:relative; height:calc(var(--u)*var(--sh)); }
+.abs { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*var(--y)); width:calc(var(--u)*var(--w)); height:calc(var(--u)*var(--h)); max-width:none; }
+.z1 { z-index:1; } .z2 { z-index:2; } .z3 { z-index:3; } .z4 { z-index:4; }
+.sr-only { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+
+/* ---- テキスト行（カンプの1行=1要素。字送りは下部JSがカンプの行幅 data-w に合わせる） ---- */
+.txt { font-size:inherit; font-weight:inherit; }
+.ln { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*var(--y)); font-size:calc(var(--u)*var(--s)); line-height:1.5; white-space:nowrap; font-feature-settings:"palt"; z-index:3; }
+.ln.r { font-weight:500; } .ln.b { font-weight:700; } .ln.h { font-weight:800; }
+.c-ink { color:var(--ink); } .c-ink2 { color:var(--ink2); } .c-white { color:#fff; } .c-cyan { color:var(--cyan-text); }
+
+/* ---- CTAボタン（光彩・グラデ・文字を含めてカンプから書き出した画像） ---- */
+.cta { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*var(--y)); width:calc(var(--u)*var(--w)); height:calc(var(--u)*var(--h)); z-index:4; display:block; transition:transform .2s ease, filter .2s ease; }
+.cta img { width:100%; height:100%; }
+.cta:active { transform:scale(.98); }
+@media (hover:hover) { .cta:hover { filter:brightness(1.08); } }
+
+/* ===== FV ===== */
+.fv { background:var(--black); }
+.fv-photo { object-fit:cover; }
+.hamburger { position:absolute; left:calc(var(--u)*263); top:calc(var(--u)*5); width:calc(var(--u)*29.4); height:calc(var(--u)*26.6); z-index:4; cursor:pointer; }
+.hamburger img { position:absolute; left:calc(var(--u)*10); top:calc(var(--u)*10); width:calc(var(--u)*9.4); height:calc(var(--u)*6.6); }
+
+/* ===== 動画（クライアント要望：TOP付近） ===== */
+.video { background:var(--black); padding:calc(var(--u)*12) calc(var(--u)*18) calc(var(--u)*6); }
+.video-frame { position:relative; width:100%; aspect-ratio:16/9; background:#000 url(assets/video-poster.jpg) center/cover no-repeat; border-radius:calc(var(--u)*5.5); overflow:hidden; }
+.video-frame video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+html.parity .video { display:none; }
+
+/* ===== ABOUT ===== */
+.about { background:var(--black); }
+.clipped { object-fit:cover; }
+
+/* ===== POINT ===== */
+.point { background:var(--black); }
+.pcard-bg { position:absolute; left:calc(var(--u)*26.83); top:calc(var(--u)*var(--y)); width:calc(var(--u)*247.27); height:calc(var(--u)*var(--h)); background:#fff; border-radius:calc(var(--u)*15.46); z-index:2; }
+
+/* ===== INSTRUCTOR ===== */
+.instructor, .guest { background:var(--black); }
+.inst { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*var(--y)); width:calc(var(--u)*64.69); height:calc(var(--u)*186.87); z-index:2; }
+.inst-clip { position:absolute; inset:0; overflow:hidden; -webkit-clip-path:url(#clip-card); clip-path:url(#clip-card); }
+.inst-photo { position:absolute; left:0; top:0; width:100%; height:calc(var(--u)*var(--ph)); object-fit:cover; object-position:50% 20%; }
+.inst-fade { object-fit:fill; pointer-events:none; }
+.inst-outline { position:absolute; left:calc(var(--u)*-0.5); top:calc(var(--u)*-0.7); width:calc(var(--u)*65.69); height:calc(var(--u)*188.07); pointer-events:none; }
+.dots i { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*425.2); width:calc(var(--u)*5.47); height:calc(var(--u)*5.47); border-radius:50%; background:#fff; }
+.guest-card { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*var(--y)); width:calc(var(--u)*var(--w)); height:calc(var(--u)*var(--h)); z-index:2; -webkit-clip-path:url(#clip-guest); clip-path:url(#clip-guest); }
+.guest-card img { width:100%; height:100%; object-fit:cover; }
+
+/* ===== LESSON（ここだけ可変高さ：スケジュールの行数に追従） ===== */
+.lesson { position:relative; background:#fff; padding:calc(var(--u)*76.05) 0 calc(var(--u)*56.29); }
+.lesson .paper { z-index:1; }
+.tabs { position:relative; z-index:3; display:flex; margin-left:calc(var(--u)*22.32); }
+.tab { width:calc(var(--u)*61.96); height:calc(var(--u)*35.13); margin-right:calc(var(--u)*-0.5); position:relative; border-radius:calc(var(--u)*5.7); background:#fff; color:var(--cyan); font-size:calc(var(--u)*9.62); font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; font-feature-settings:"palt"; letter-spacing:.005em; transition:background .15s ease,color .15s ease; }
+.tab[aria-selected="true"] { background:var(--cyan); color:#fff; }
+.sched { position:relative; z-index:3; margin:calc(var(--u)*18.11) 0 0 calc(var(--u)*21.76); width:calc(var(--u)*247.02); border-radius:calc(var(--u)*5.93); background:#fff; padding:calc(var(--u)*11.18) 0 0; }
+/* 0.5ptの枠線はレイアウトに影響しないよう疑似要素で描く */
+.tab::before, .sched::before { content:""; position:absolute; inset:0; border:calc(var(--u)*.5) solid var(--cyan); border-radius:inherit; pointer-events:none; }
+/* カンプ準拠：最終行が枠の下線に接する（カンプどおり）。余白を取りたい場合は --sched-bottom を 8 などに */
+.sched { --sched-bottom:-0.83; }
+.sched-list { margin-bottom:calc(var(--u)*var(--sched-bottom)); }
+.day { position:relative; padding-left:calc(var(--u)*54.34); margin-top:calc(var(--u)*var(--gap,5.9)); }
+.day:first-child { margin-top:0; }
+/* 曜日ブロック間のアキ・バッジ位置はカンプの実測値（カンプ上で不揃いのためそのまま再現） */
+.day:nth-child(2) { --gap:10; --bo:-2.98; }
+.day:nth-child(3) { --gap:8.2; --bo:3.02; }
+.day:nth-child(4) { --gap:5.2; --bo:-2.58; }
+.day:nth-child(5) { --gap:4.8; --bo:1.12; }
+.day:nth-child(6) { --gap:1.5; --bo:-2.88; }
+.day:nth-child(1) { --bo:1.22; }
+.badge { position:absolute; left:calc(var(--u)*11.94); top:50%; width:calc(var(--u)*31.45); height:calc(var(--u)*20.4); margin-top:calc(var(--u)*(var(--bo,0) - 10.2)); border-radius:calc(var(--u)*10.2); background:var(--cyan); color:#fff; font-size:calc(var(--u)*7.4); font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; letter-spacing:.05em; text-indent:.05em; }
+.row { display:flex; align-items:baseline; width:calc(var(--u)*166.9); font-size:calc(var(--u)*9); font-weight:700; line-height:calc(var(--u)*14); color:var(--ink); white-space:nowrap; font-feature-settings:"palt"; letter-spacing:.07em; }
+.row .dots { flex:1 1 auto; min-width:calc(var(--u)*6); height:calc(var(--u)*1.6); margin:0 calc(var(--u)*1); align-self:center; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 6'%3E%3Ccircle cx='4.5' cy='3' r='1.9' fill='%23231f20'/%3E%3C/svg%3E"); background-size:calc(var(--u)*2.4) calc(var(--u)*1.6); background-position:0 50%; background-repeat:repeat-x; }
+.note { position:relative; z-index:3; margin:calc(var(--u)*7.83) 0 0 calc(var(--u)*31.3); width:calc(var(--u)*229.6); font-size:calc(var(--u)*9); font-weight:700; line-height:calc(var(--u)*14); color:var(--ink2); white-space:nowrap; font-feature-settings:"palt"; }
+.fitline { display:inline-block; }
+.lesson .cta { top:auto; bottom:calc(var(--u)*-43.75); }
+
+/* ===== SNS ===== */
+.sns { background:#fff; }
+.sns-card { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*127.33); width:calc(var(--u)*77.4); height:calc(var(--u)*160.26); background:#fff; border-radius:calc(var(--u)*5.78); z-index:2; display:block; }
+.sns-label { position:absolute; left:0; right:0; top:calc(var(--u)*9.06); text-align:center; font-size:calc(var(--u)*9.04); font-weight:700; line-height:calc(var(--u)*11.2); color:var(--ink); font-feature-settings:"palt"; white-space:nowrap; }
+.sns-thumb { position:absolute; left:calc(var(--u)*5.84); top:calc(var(--u)*40.72); width:calc(var(--u)*65.73); height:calc(var(--u)*114.36); border-radius:calc(var(--u)*5.69); background:var(--sns-thumb) center/cover no-repeat; }
+
+/* ===== READY TO DANCE / STUDIO ===== */
+.ready { background:#fff; }
+.studio { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*var(--y)); width:calc(var(--u)*var(--w)); height:calc(var(--u)*var(--h)); z-index:2; }
+.studio img { width:100%; height:100%; object-fit:cover; }
+.studio::after { content:""; position:absolute; left:calc(var(--u)*-1.35); top:calc(var(--u)*-.9); right:calc(var(--u)*-.9); bottom:calc(var(--u)*-.9); border:calc(var(--u)*1.805) solid var(--black2); pointer-events:none; }
+
+/* ===== FOOTER ===== */
+.footer { background:linear-gradient(var(--paper) 0 18%, var(--black2) 18%); } /* 画像が読めなくても住所・TELが読めるよう黒を敷く */
+.addr-line { position:absolute; left:calc(var(--u)*37.1); top:calc(var(--u)*123.01); width:calc(var(--u)*.5); height:calc(var(--u)*84.4); margin-left:calc(var(--u)*-.25); background:#fff; z-index:3; }
+a.ln { display:block; }
+
+/* PC閲覧時：PC版カンプは無いためスマホ幅（最大480px）を中央に固定し、左右は黒 */
+@media (min-width:481px) { .page { box-shadow:0 0 40px rgba(0,0,0,.6); } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .cta { transition:none; } }
+</style>
+<script>
+/* ?parity=1 … カンプ突き合わせ用（動画枠を隠す） */
+if(/[?&]parity=1/.test(location.search)){
+  document.documentElement.classList.add('parity');
+  new MutationObserver(function(ms){
+    ms.forEach(function(m){ Array.prototype.forEach.call(m.addedNodes,function(n){
+      if(n.tagName==='IMG'){ n.loading='eager'; n.decoding='sync'; }
+    }); });
+  }).observe(document.documentElement,{childList:true,subtree:true});
+}
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <clipPath id="clip-card" clipPathUnits="objectBoundingBox"><path d="M0.91296 0.00007 L0.07537 0.02098 C0.03288 0.02204 0.00000 0.03428 0.00000 0.04902 L0.00000 0.97079 C0.00000 0.98711 0.04002 1.00000 0.08706 0.99883 L0.92463 0.97793 C0.96711 0.97687 1.00000 0.96463 1.00000 0.94988 L1.00000 0.02812 C1.00000 0.01249 0.96330 0.00000 0.91889 0.00000 C0.91693 0.00000 0.91495 0.00003 0.91296 0.00007Z"/></clipPath>
+  <clipPath id="clip-guest" clipPathUnits="objectBoundingBox"><path d="M0.92629 0.00021 L0.11925 0.05637 C0.07770 0.05926 0.04261 0.09093 0.04086 0.12711 L0.00175 0.93683 C0.00000 0.97301 0.03227 1.00000 0.07381 0.99711 L0.88086 0.94095 C0.92239 0.93806 0.95749 0.90639 0.95924 0.87020 L0.99835 0.06049 C1.00000 0.02609 0.97093 0.00000 0.93237 0.00000 C0.93036 0.00000 0.92834 0.00007 0.92629 0.00021Z"/></clipPath>
+</defs></svg>
+<div class="page" id="top">
+
+  <!-- ================= FV ================= -->
+  <header class="sec fv" style="--sh:415">
+    <img class="abs fv-photo" src="assets/fv.jpg" alt="Dance Office のステージ写真" style="--x:0;--y:0;--w:300;--h:368.22;" fetchpriority="high">
+    <a href="#top" aria-label="Dance Office"><img class="abs z3" src="assets/logo-header.png" alt="Dance Office Kids &amp; Junior Dance school" style="--x:15.6;--y:18.4;--w:79.6;--h:17.6;"></a>
+    <button class="hamburger" type="button" aria-label="メニュー"><img src="assets/hamburger.png" alt=""></button>
+    <h1><img class="abs z3" src="assets/fv-headline.png" alt="0（ゼロ）の可能性は無限大! 基礎を徹底指導するダンススクール" style="--x:33;--y:63;--w:246.2;--h:148.4;"></h1>
+    <img class="abs z3" src="assets/logo-fv.png" alt="Dance Office Kids &amp; Junior Dance school" style="--x:24.2;--y:299.6;--w:168.8;--h:37.2;">
+    <a class="cta" href="#contact" style="--x:20.2;--y:337.4;--w:259.6;--h:68.8"><img src="assets/btn-trial-fv.png" alt="無料体験受付中"></a>
+  </header>
+
+  <!-- ================= 動画（assets/top.mp4 を置くと再生されます。無い間はポスター画像） ================= -->
+  <section class="video" aria-label="紹介動画">
+    <div class="video-frame">
+      <video muted autoplay loop playsinline controls preload="metadata" poster="assets/video-poster.jpg">
+        <source src="assets/top.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="sec about" id="about" style="--sh:493">
+    <h2><img class="abs z3" src="assets/h-about.png" alt="ABOUT" style="--x:22.4;--y:35;--w:89.2;--h:28.2;"></h2>
+    <p class="txt">
+      <span class="ln b c-cyan" data-w="86.22" style="--x:122.55;--y:38.46;--s:9.36">Dance Office<span class="c-white">って</span></span>
+      <span class="ln b c-white" data-w="73.16" style="--x:122.16;--y:51.46;--s:9.36">どんなスクール?</span>
+    </p>
+    <img class="abs clipped z1" src="assets/about-1.jpg" alt="キッズクラスのステージ" style="--x:0;--y:93.32;--w:110.32;--h:145.49;clip-path:polygon(14.10% 6.27%,0.00% 53.74%,0.00% 100.00%,71.86% 94.75%,100.00% 0.00%);">
+    <img class="abs clipped z1" src="assets/about-2.jpg" alt="インストラクターのショーケース" style="--x:83.91;--y:95.98;--w:123.1;--h:134.91;clip-path:polygon(23.01% 6.77%,0.00% 100.00%,75.32% 100.00%,100.00% 0.00%);">
+    <img class="abs clipped z1" src="assets/about-3.jpg" alt="ジュニアクラスのステージ" style="--x:183.77;--y:76.17;--w:116.23;--h:141.05;clip-path:polygon(25.72% 5.90%,0.00% 100.00%,44.77% 100.00%,80.55% 97.16%,100.00% 25.99%,100.00% 0.00%);">
+    <img class="abs z2" src="assets/paper-about.svg" alt="" style="--x:0.31;--y:187.53;--w:298.75;--h:305.38;">
+    <h3 class="txt">
+      <span class="ln h c-ink" data-w="179.7" style="--x:17.47;--y:237.61;--s:16.64">全校専用スタジオを完備!</span>
+      <span class="ln h c-ink" data-w="248.21" style="--x:17.47;--y:258.6;--s:16.64">ダンスをもっと好きになれる場所。</span>
+    </h3>
+    <p class="txt">
+      <span class="ln r c-ink" data-w="254.5" style="--x:19.03;--y:291.6;--s:9.36">Dance Officeは、未就学児から高校生までを中心としたダンスス</span>
+      <span class="ln r c-ink" data-w="34.87" style="--x:18.53;--y:305.61;--s:9.36">クール。</span>
+      <span class="ln r c-ink" data-w="254.58" style="--x:18.83;--y:319.61;--s:9.36">アイソレなど基礎を徹底的に指導しながら、一人ひとりのレベルや</span>
+      <span class="ln r c-ink" data-w="193.94" style="--x:19.03;--y:333.62;--s:9.36">個性に合わせたクラス別レッスンを行っています。</span>
+      <span class="ln r c-ink" data-w="165" style="--x:19.03;--y:358.7;--s:9.36">「楽しく踊りたい」「もっと上手になりたい」</span>
+      <span class="ln r c-ink" data-w="105.32" style="--x:19.03;--y:372.7;--s:9.36">「コンテストに挑戦したい」</span>
+      <span class="ln r c-ink" data-w="240.55" style="--x:19.03;--y:386.71;--s:9.36">それぞれの目標に合わせて成長できる環境をつくっています。</span>
+    </p>
+    <img class="abs z3" src="assets/hand-dance-changes.png" alt="Dance Changes Everything" style="--x:71.4;--y:417.2;--w:187.4;--h:40;">
+  </section>
+
+  <!-- ================= POINT ================= -->
+  <section class="sec point" id="point" style="--sh:932">
+    <img class="abs z3" src="assets/area-names.png" alt="TAGAWA / NOGATA / IIZUKA / MIYAWAKA" style="--x:21.6;--y:3.6;--w:247;--h:31.4;">
+    <h2><img class="abs z3" src="assets/h-point.png" alt="POINT" style="--x:24;--y:58.4;--w:78.2;--h:28.2;"></h2>
+    <p class="txt">
+      <span class="ln b c-cyan" data-w="78.46" style="--x:122.55;--y:61.84;--s:9.36">Dance Office<span class="c-white">が</span></span>
+      <span class="ln b c-white" data-w="57.79" style="--x:122.55;--y:74.84;--s:9.36">選ばれる理由</span>
+    </p>
+    <img class="abs clipped z1" src="assets/group.jpg" alt="発表会の集合写真" style="--x:0;--y:94.34;--w:300;--h:135.64;clip-path:polygon(0.00% 22.48%,0.00% 100.00%,100.00% 77.52%,100.00% 0.00%);">
+    <img class="abs clipped z1" src="assets/silhouette.jpg" alt="ステージのシルエット" style="--x:0;--y:889.86;--w:300;--h:135.64;clip-path:polygon(0.00% 22.48%,0.00% 100.00%,100.00% 77.52%,100.00% 0.00%);">
+    <article class="pcard">
+        <div class="pcard-bg" style="--y:204.28;--h:143.64"></div>
+        <img class="abs z3" src="assets/point-01.png" alt="point 01 BEGINNER" style="--x:9.6;--y:172;--w:168;--h:51.2;">
+        <h3 class="txt"><span class="ln h c-ink" data-w="173.08" style="--x:39.64;--y:225.03;--s:13.52">0からでも必ず上手く育てる。</span></h3>
+        <p class="txt">
+          <span class="ln r c-ink" data-w="166.43" style="--x:40.12;--y:252.86;--s:9.36">アイソレーション,リズム,柔軟は上達の要。</span>
+          <span class="ln r c-ink" data-w="207.49" style="--x:40.31;--y:266.86;--s:9.36">ダンスの基礎だけを“基礎クラス”で徹底指導します。</span>
+          <span class="ln r c-ink" data-w="223.16" style="--x:40.31;--y:280.86;--s:9.36">国内外のトップクラスのダンサーを招致して行うマンス</span>
+          <span class="ln r c-ink" data-w="223.94" style="--x:39.56;--y:294.87;--s:9.36">リーレッスンやワークショップなど、ダンスレベルの向上に</span>
+          <span class="ln r c-ink" data-w="223.17" style="--x:40.31;--y:308.87;--s:9.36">特化したレッスンを行っています。発表会やイベントなどス</span>
+          <span class="ln r c-ink" data-w="100.93" style="--x:40.08;--y:322.87;--s:9.36">テージに立つ機会も豊富!</span>
+        </p>
+      </article>
+      <article class="pcard">
+        <div class="pcard-bg" style="--y:406.47;--h:130.96"></div>
+        <img class="abs z3" src="assets/point-02.png" alt="point 02 INSTRUCTOR" style="--x:9.6;--y:374.2;--w:193;--h:51.2;">
+        <h3 class="txt"><span class="ln h c-ink" data-w="173.94" style="--x:39.64;--y:427.22;--s:13.52">個性豊かなインストラクター。</span></h3>
+        <p class="txt">
+          <span class="ln r c-ink" data-w="223.08" style="--x:40.31;--y:455.04;--s:9.36">HIPHOP・ROCK・POP・Girls・K-POP系など、それぞれ</span>
+          <span class="ln r c-ink" data-w="187.48" style="--x:40.33;--y:469.04;--s:9.36">の得意ジャンルを持つインストラクターが在籍。</span>
+          <span class="ln r c-ink" data-w="223.04" style="--x:40.31;--y:483.05;--s:9.36">韓国・米国へのダンス留学や、国内外のトップダンサーか</span>
+          <span class="ln r c-ink" data-w="223.62" style="--x:39.59;--y:497.05;--s:9.36">らインストラクターレッスンを経験するなど、高いレベル</span>
+          <span class="ln r c-ink" data-w="202.04" style="--x:40.33;--y:511.06;--s:9.36">の指導力を持ったインストラクターが揃っています。</span>
+        </p>
+      </article>
+      <article class="pcard">
+        <div class="pcard-bg" style="--y:601.34;--h:130.96"></div>
+        <img class="abs z3" src="assets/point-03.png" alt="point 03 LEVEL UP" style="--x:9.6;--y:569;--w:164;--h:51.2;">
+        <h3 class="txt"><span class="ln h c-ink" data-w="184.49" style="--x:39.64;--y:622.09;--s:13.52">「楽しい!踊れる!」の、その先へ。</span></h3>
+        <p class="txt">
+          <span class="ln r c-ink" data-w="216.61" style="--x:40.31;--y:649.91;--s:9.36">初心者クラスから上級・特別クラス・ショーケース・バトル</span>
+          <span class="ln r c-ink" data-w="213.33" style="--x:39.94;--y:663.91;--s:9.36">コンテストへの挑戦まで、成長に合わせた環境を用意。</span>
+          <span class="ln r c-ink" data-w="222.91" style="--x:40.31;--y:677.92;--s:9.36">国外へのダンス留学についても強固なコネクションを有</span>
+          <span class="ln r c-ink" data-w="223.66" style="--x:40.21;--y:691.92;--s:9.36">するなど、ダンサーとしての確かなキャリアを築くサポート</span>
+          <span class="ln r c-ink" data-w="52.02" style="--x:40.31;--y:705.92;--s:9.36">が可能です。</span>
+        </p>
+      </article>
+      <article class="pcard">
+        <div class="pcard-bg" style="--y:794.87;--h:121"></div>
+        <img class="abs z3" src="assets/point-04.png" alt="point 04 COMMUNITY" style="--x:9.6;--y:762.6;--w:191;--h:51.2;">
+        <h3 class="txt"><span class="ln h c-ink" data-w="170.69" style="--x:39.64;--y:815.63;--s:13.52">ダンスを通じて、自信が育つ。</span></h3>
+        <p class="txt">
+          <span class="ln r c-ink" data-w="222.9" style="--x:40.31;--y:843.45;--s:9.36">技術だけでなく、人前で表現する力や仲間と一緒に取り組</span>
+          <span class="ln r c-ink" data-w="71.1" style="--x:40.25;--y:857.45;--s:9.36">む経験も大切に。</span>
+          <span class="ln r c-ink" data-w="223.3" style="--x:40.06;--y:871.46;--s:9.36">イベントや発表会、コンテストなど、さまざまな経験の中で</span>
+          <span class="ln r c-ink" data-w="163.78" style="--x:40.31;--y:885.46;--s:9.36">ダンスを通じた社会性や自信を育みます。</span>
+        </p>
+      </article>
+      
+  </section>
+
+  <!-- ================= INSTRUCTOR ================= -->
+  <section class="sec instructor" id="instructor" style="--sh:460">
+    <h2><img class="abs z3" src="assets/h-instructor.png" alt="INSTRUCTOR" style="--x:24;--y:130.4;--w:167.2;--h:28.2;"></h2>
+    <p class="txt">
+      <span class="ln b c-white" data-w="55.4" style="--x:204.89;--y:133.87;--s:9.36">多ジャンルの</span>
+      <span class="ln b c-white" data-w="66.94" style="--x:204.89;--y:146.87;--s:9.36">ダンスを学べる</span>
+    </p>
+    <img class="abs z1" src="assets/watermark-instructor.png" alt="" style="--x:0;--y:157;--w:299.6;--h:103">
+    <!-- インストラクター写真：assets/instructor-〇〇.jpg を同名で上書きすると差し替わります -->
+    <div class="inst" style="--x:12.48;--y:227.93">
+        <div class="inst-clip" style="background:#6e767a"><img class="inst-photo" src="assets/instructor-haruka.jpg" alt="HARUKA（HIPHOP / GIRLS）" style="--ph:127.64"><img class="inst-photo inst-fade" src="assets/instructor-haruka-fade.png" alt="" style="--ph:127.64"></div>
+        <img class="inst-outline" src="assets/card-outline.svg" alt="">
+      </div>
+      <img class="abs z3" src="assets/name-haruka.png" alt="" style="--x:19.8;--y:368;--w:55.2;--h:36.6;">
+    <div class="inst" style="--x:83.52;--y:221.8">
+        <div class="inst-clip" style="background:#231f20"><img class="inst-photo" src="assets/instructor-suke.jpg" alt="SUKE（HIPHOP / ROCK）" style="--ph:186.87"><img class="inst-photo inst-fade" src="assets/instructor-suke-fade.png" alt="" style="--ph:186.87"></div>
+        <img class="inst-outline" src="assets/card-outline.svg" alt="">
+      </div>
+      <img class="abs z3" src="assets/name-suke.png" alt="" style="--x:91;--y:363;--w:49.8;--h:35.2;">
+    <div class="inst" style="--x:154.56;--y:216.69">
+        <div class="inst-clip" style="background:#191b1f"><img class="inst-photo" src="assets/instructor-mao.jpg" alt="MAO（HIPHOP / GIRLS）" style="--ph:149.44"><img class="inst-photo inst-fade" src="assets/instructor-mao-fade.png" alt="" style="--ph:149.44"></div>
+        <img class="inst-outline" src="assets/card-outline.svg" alt="">
+      </div>
+      <img class="abs z3" src="assets/name-mao.png" alt="" style="--x:162;--y:358.2;--w:50.4;--h:35.2;">
+    <div class="inst" style="--x:225.6;--y:210.56">
+        <div class="inst-clip" style="background:#231f20"><img class="inst-photo" src="assets/instructor-togo.jpg" alt="TOGO（HIPHOP / ROCK）" style="--ph:186.87"><img class="inst-photo inst-fade" src="assets/instructor-togo-fade.png" alt="" style="--ph:186.87"></div>
+        <img class="inst-outline" src="assets/card-outline.svg" alt="">
+      </div>
+      <img class="abs z3" src="assets/name-togo.png" alt="" style="--x:233.2;--y:351.8;--w:49.8;--h:35.4;">
+    <div class="dots" aria-hidden="true"><i style="--x:125.9"></i><i style="--x:135.9"></i><i style="--x:146.8"></i><i style="--x:156.9"></i><i style="--x:167.6"></i></div>
+  </section>
+
+  <!-- ================= GUEST INSTRUCTOR ================= -->
+  <section class="sec guest" id="guest" style="--sh:412.9">
+    <h2><img class="abs z3" src="assets/h-guest.png" alt="GUEST INSTRUCTOR" style="--x:29.4;--y:35.6;--w:240.4;--h:28.2;"></h2>
+    <img class="abs z1" src="assets/watermark-instructor.png" alt="" style="--x:0;--y:63.9;--w:299.6;--h:103">
+    <div class="guest-card" style="--x:23.98;--y:138.1;--w:121.49;--h:140.89"><img src="assets/guest-dd.jpg" alt="D.D（HIPHOP）"></div>
+    <img class="abs z3" src="assets/name-dd.png" alt="" style="--x:103.6;--y:241.6;--w:31.6;--h:33.6;">
+    <img class="abs z2" src="assets/guest-blank.svg" alt="" style="--x:155.16;--y:126.92;--w:121.5;--h:141.27;">
+  </section>
+
+  <!-- ================= LESSON ================= -->
+  <section class="lesson" id="lesson">
+    <img class="abs paper" src="assets/paper-lesson.svg" alt="" style="--x:-0.82;--y:-46.61;--w:301.28;--h:305.38;">
+    <h2><img class="abs z3" src="assets/h-lesson.png" alt="LESSON" style="--x:24;--y:23.3;--w:96.6;--h:28.2;"></h2>
+    <p class="txt">
+      <span class="ln b c-ink2" data-w="112.18" style="--x:132.7;--y:35.21;--s:9.36">レベル別・年齢別のクラス</span>
+    </p>
+    <!-- スケジュールの中身は schedule.js を編集してください -->
+    <div class="tabs" role="tablist" aria-label="校舎を選ぶ" id="tabs">
+      <button class="tab" type="button" role="tab" aria-selected="false" data-school="tagawa">田川校</button><button class="tab" type="button" role="tab" aria-selected="false" data-school="nogata">直方校</button><button class="tab" type="button" role="tab" aria-selected="true" data-school="iizuka">飯塚校</button><button class="tab" type="button" role="tab" aria-selected="false" data-school="miyawaka">宮若校</button>
+    </div>
+    <div class="sched" role="tabpanel" aria-live="polite">
+      <div class="sched-list" id="sched">
+          <div class="day"><span class="badge">MON</span><ul class="rows"><li class="row"><span class="cls">MAOジュニア中級</span><span class="dots" aria-hidden="true"></span><span class="time">18：50〜19：50</span></li><li class="row"><span class="cls">MAOジュニア上級</span><span class="dots" aria-hidden="true"></span><span class="time">20：00〜21：00</span></li></ul></div>
+          <div class="day"><span class="badge">TUE</span><ul class="rows"><li class="row"><span class="cls">MAOキッズミニ</span><span class="dots" aria-hidden="true"></span><span class="time">18：20〜19：20</span></li><li class="row"><span class="cls">MAOキッズ</span><span class="dots" aria-hidden="true"></span><span class="time">19：30〜20：30</span></li><li class="row"><span class="cls">MAOジュニア中級</span><span class="dots" aria-hidden="true"></span><span class="time">20：40〜21：40</span></li></ul></div>
+          <div class="day"><span class="badge">WED</span><ul class="rows"><li class="row"><span class="cls">HANAキッズ</span><span class="dots" aria-hidden="true"></span><span class="time">18:00〜19:00</span></li><li class="row"><span class="cls">HANAジュニア</span><span class="dots" aria-hidden="true"></span><span class="time">19：10〜20：10</span></li></ul></div>
+          <div class="day"><span class="badge">THU</span><ul class="rows"><li class="row"><span class="cls">YUAキッズミニ</span><span class="dots" aria-hidden="true"></span><span class="time">18：00〜19：00</span></li><li class="row"><span class="cls">YUAジュニア</span><span class="dots" aria-hidden="true"></span><span class="time">19：10〜20：10</span></li><li class="row"><span class="cls">TOGOジュニア上級</span><span class="dots" aria-hidden="true"></span><span class="time">20：20〜21：20</span></li></ul></div>
+          <div class="day"><span class="badge">FRI</span><ul class="rows"><li class="row"><span class="cls">MAOキッズ基礎特別</span><span class="dots" aria-hidden="true"></span><span class="time">18:00〜19:00</span></li><li class="row"><span class="cls">MAOジュニア</span><span class="dots" aria-hidden="true"></span><span class="time">19：10〜20：10</span></li><li class="row"><span class="cls">SHOICHIブレイキン</span><span class="dots" aria-hidden="true"></span><span class="time">20：20〜21：20</span></li></ul></div>
+          <div class="day"><span class="badge">SAT</span><ul class="rows"><li class="row"><span class="cls">HARUKA特別クラス</span><span class="dots" aria-hidden="true"></span><span class="time">17:00〜18:00</span></li><li class="row"><span class="cls">MAOジュニア</span><span class="dots" aria-hidden="true"></span><span class="time">18：10〜19：10</span></li><li class="row"><span class="cls">MAOジュニア基礎特別</span><span class="dots" aria-hidden="true"></span><span class="time">19:20〜20:20</span></li></ul></div>
+      </div>
+    </div>
+    <p class="note"><span class="fitline" data-w="229.6">※詳しいレッスン情報は各校へお問い合わせください</span></p>
+    <a class="cta" href="#contact" style="--x:20;--w:259.2;--h:69"><img src="assets/btn-trial-lesson.png" alt="まずは無料体験へ"></a>
+  </section>
+
+  <!-- ================= SNS ================= -->
+  <section class="sec sns" id="sns" style="--sh:305.38">
+    <img class="abs z1" src="assets/paper-sns.svg" alt="" style="--x:-0.16;--y:0;--w:299.22;--h:305.38;">
+    <h2><img class="abs z3" src="assets/h-sns.png" alt="SNS" style="--x:23.4;--y:65.63;--w:52.2;--h:28.2;"></h2>
+    <p class="txt">
+      <span class="ln b c-cyan" data-w="122.04" style="--x:93.59;--y:77.55;--s:9.36">FOLLOW OUR MOVES.</span>
+    </p>
+    <!-- Instagram の URL が決まったら href="#" を各アカウントのURLに書き換えてください -->
+    <a class="sns-card" href="#" data-instagram="tagawa-nogata" style="--x:20.37" aria-label="田川校・直方校 Instagram">
+        <span class="sns-label">田川校・直方校<br>Instagram</span>
+        <span class="sns-thumb"></span>
+      </a>
+      <a class="sns-card" href="#" data-instagram="iizuka" style="--x:109.5" aria-label="飯塚校 Instagram">
+        <span class="sns-label">飯塚校<br>Instagram</span>
+        <span class="sns-thumb"></span>
+      </a>
+      <a class="sns-card" href="#" data-instagram="miyawaka" style="--x:199.3" aria-label="宮若校 Instagram">
+        <span class="sns-label">宮若校<br>Instagram</span>
+        <span class="sns-thumb"></span>
+      </a>
+      
+  </section>
+
+  <!-- ================= READY TO DANCE? / STUDIO ================= -->
+  <section class="sec ready" id="studio" style="--sh:488.54">
+    <img class="abs z3" src="assets/hand-ready.png" alt="READY TO DANCE?" style="--x:117.4;--y:-8.35;--w:168.4;--h:36.2;">
+    <img class="abs clipped z1" src="assets/exterior.jpg" alt="Dance Office スタジオ外観" style="--x:0.12;--y:45.79;--w:299.5;--h:205.91;clip-path:polygon(0.00% 7.01%,0.00% 100.00%,100.00% 92.99%,100.00% 0.00%);">
+    <figure class="studio" style="--x:8.62;--y:271.72;--w:135.36;--h:96.1"><img src="assets/studio-tagawa.jpg" alt="TAGAWA スタジオ"></figure>
+      <img class="abs z3" src="assets/label-tagawa.png" alt="TAGAWA" style="--x:101.6;--y:355.05;--w:34;--h:5.8;">
+      <figure class="studio" style="--x:156.27;--y:271.72;--w:135.36;--h:96.1"><img src="assets/studio-nogata.jpg" alt="NOGATA スタジオ"></figure>
+      <img class="abs z3" src="assets/label-nogata.png" alt="NOGATA" style="--x:252.4;--y:355.05;--w:32;--h:5.8;">
+      <figure class="studio" style="--x:8.62;--y:379.47;--w:135.36;--h:96.1"><img src="assets/studio-iizuka.jpg" alt="IIZUKA スタジオ"></figure>
+      <img class="abs z3" src="assets/label-iizuka.png" alt="IIZUKA" style="--x:110;--y:462.85;--w:25.6;--h:5.8;">
+      <figure class="studio" style="--x:156.27;--y:379.47;--w:135.36;--h:96.1"><img src="assets/studio-miyawaka.jpg" alt="MIYAWAKA スタジオ"></figure>
+      <img class="abs z3" src="assets/label-miyawaka.png" alt="MIYAWAKA" style="--x:241.2;--y:462.85;--w:43.2;--h:5.6;">
+      
+  </section>
+
+  <!-- ================= FOOTER / CONTACT ================= -->
+  <footer class="sec footer" id="contact" style="--sh:306.22">
+    <img class="abs z1" src="assets/paper-footer.svg" alt="" style="--x:-2.15;--y:0;--w:303.94;--h:306.22;">
+    <img class="abs z3" src="assets/logo-footer.png" alt="Dance Office Kids &amp; Junior Dance school" style="--x:31.4;--y:66.31;--w:155.4;--h:34.2;">
+    <span class="addr-line" aria-hidden="true"></span>
+    <address class="txt" style="font-style:normal">
+      <span class="ln b c-white" data-w="148.43" style="--x:48.58;--y:126.05;--s:8.32">田川校　：　福岡県田川市大字伊田２３３９</span>
+      <span class="ln b c-white" data-w="170.1" style="--x:48.58;--y:145.34;--s:8.32">直方校　：　福岡県田川郡福智町伊方４４７６-19</span>
+      <span class="ln b c-white" data-w="191.32" style="--x:48.58;--y:164.63;--s:8.32">飯塚校　：　福岡県飯塚市柏の森6-1麻生塾ボウル1階</span>
+      <span class="ln b c-white" data-w="172.82" style="--x:48.58;--y:186.57;--s:8.32">宮若校　：　福岡県宮若市金丸83−2 KⅡビル1F</span>
+    </address>
+    <a href="tel:080-3731-8442" class="ln b c-white" data-w="97.6" style="--x:157.47;--y:217.69;--s:9.36">TEL：080-3731-8442</a>
+    <a class="cta" href="#contact" style="--x:20;--y:229.11;--w:259.2;--h:68.6"><img src="assets/btn-contact.png" alt="無料体験・お問い合わせ"></a>
+  </footer>
+</div>
+
+<script src="schedule.js"></script>
+<script>
+(function(){
+  /* ---------- スケジュール描画（データは schedule.js） ---------- */
+  var data = window.DANCE_OFFICE_SCHEDULE;
+  var box = document.getElementById('sched');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('#tabs .tab'));
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function find(id){ if(!data||!data.schools) return null; for(var i=0;i<data.schools.length;i++) if(data.schools[i].id===id) return data.schools[i]; return null; }
+  function render(id){
+    var s = find(id); if(!s) return;
+    box.innerHTML = (s.days||[]).map(function(d){
+      return '<div class="day"><span class="badge">'+esc(d.day)+'</span><ul class="rows">'+
+        (d.classes||[]).map(function(c){ return '<li class="row"><span class="cls">'+esc(c[0])+'</span><span class="dots" aria-hidden="true"></span><span class="time">'+esc(c[1])+'</span></li>'; }).join('')+
+        '</ul></div>';
+    }).join('');
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-school')===id ? 'true':'false'); });
+  }
+  if(data && data.schools){
+    tabs.forEach(function(t){
+      var s = find(t.getAttribute('data-school'));
+      if(s) t.textContent = s.name;
+      t.addEventListener('click', function(){ render(t.getAttribute('data-school')); });
+    });
+    render(find(data.initial) ? data.initial : data.schools[0].id);
+  }
+
+  /* ---------- 字送り合わせ：各行をカンプの行幅(data-w)にそろえる ---------- */
+  function fit(){
+    var u = Math.min(window.innerWidth, 480) / 300;
+    var els = document.querySelectorAll('[data-w]');
+    for(var i=0;i<els.length;i++){
+      var el = els[i]; el.style.letterSpacing = '0';
+      var n = Array.from(el.textContent).length; if(!n) continue;
+      var fs = parseFloat(getComputedStyle(el).fontSize);
+      var ls = (parseFloat(el.getAttribute('data-w'))*u - el.getBoundingClientRect().width) / n / fs;
+      if(ls > -0.12 && ls < 0.6) el.style.letterSpacing = ls.toFixed(4)+'em';
+    }
+  }
+  fit();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('load', fit);
+  window.addEventListener('resize', fit);
+
+  /* ---------- 動画：ファイルが無い間はポスター画像だけを見せる ---------- */
+  var v = document.querySelector('.video-frame video');
+  if(v){
+    var src = v.querySelector('source');
+    var hide = function(){ v.style.visibility = 'hidden'; };
+    if(src) src.addEventListener('error', hide);
+    v.addEventListener('error', hide);
+  }
+})();
+</script>
+</body>
+</html>
