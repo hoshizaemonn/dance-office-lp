@@ -70,6 +70,10 @@ TOPの「無料体験受付中」ボタンのすぐ下に、16:9 の動画枠が
 
 ## 3. インストラクター写真を差し替える
 
+インストラクターは横スライド（9名・自動送り3.5秒・指で左右にスワイプ可）です。
+**SHOICHI / YUAN / MIKOTO / YUA / HANA の5名は、デザインデータと同じく他の方の写真を仮で入れています。** 必ず本人の写真に差し替えてください。
+Instagram枠の画像は `assets/instagram-tagawa-nogata.jpg` / `instagram-iizuka.jpg` / `instagram-miyawaka.jpg`（2026-09-29時点のプロフィール画面）。同名で上書きすると差し替わります。
+
 `assets/` の中の次のファイルを、**同じファイル名で上書き** してください。
 
 | インストラクター | ファイル名 | 推奨サイズ（縦長） |
@@ -78,6 +82,16 @@ TOPの「無料体験受付中」ボタンのすぐ下に、16:9 の動画枠が
 | SUKE | `assets/instructor-suke.jpg` | 424 × 1224 px |
 | MAO | `assets/instructor-mao.jpg` | 518 × 1196 px |
 | TOGO | `assets/instructor-togo.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
+| SHOICHI（★仮の写真） | `assets/instructor-shoichi.jpg` | 520 × 1200 px 程度 |
+| YUAN（★仮の写真） | `assets/instructor-yuan.jpg` | 520 × 1200 px 程度 |
+| MIKOTO（★仮の写真） | `assets/instructor-mikoto.jpg` | 520 × 1200 px 程度 |
+| YUA（★仮の写真） | `assets/instructor-yua.jpg` | 520 × 1200 px 程度 |
+| HANA（★仮の写真） | `assets/instructor-hana.jpg` | 520 × 1200 px 程度 |
+| SHOICHI | `assets/instructor-shoichi.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
+| YUAN | `assets/instructor-yuan.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
+| MIKOTO | `assets/instructor-mikoto.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
+| YUA | `assets/instructor-yua.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
+| HANA | `assets/instructor-hana.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
 | D.D（ゲスト） | `assets/guest-dd.jpg` | 600 × 700 px 程度 |
 
 - 形式は JPG。縦横の比率が違っても、枠に合わせて自動で中央を切り抜いて表示します（顔が上寄りに来る写真が収まりやすいです）。

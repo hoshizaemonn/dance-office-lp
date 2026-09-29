@@ -9,7 +9,7 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;800&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/fv.jpg">
 <style>
 /* 新ゴ（ShinGo）ローカルフォント定義：端末に入っていれば使用、無ければ Noto Sans JP */
@@ -48,7 +48,10 @@ button { background:none; border:0; padding:0; font:inherit; color:inherit; }
 /* ---- テキスト行（カンプの1行=1要素。字送りは下部JSがカンプの行幅 data-w に合わせる） ---- */
 .txt { font-size:inherit; font-weight:inherit; }
 .ln { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*var(--y)); font-size:calc(var(--u)*var(--s)); line-height:1.5; white-space:nowrap; font-feature-settings:"palt"; z-index:3; }
-.ln.r { font-weight:500; } .ln.b { font-weight:700; } .ln.h { font-weight:800; }
+/* 本文とフッターは BIZ UDPゴシック（UD新ゴが入っている端末ではUD新ゴ） */
+.ln.r { font-family:'ShinGo','BIZ UDPGothic','Noto Sans JP',sans-serif; font-weight:400; }
+.footer .ln { font-family:'ShinGo','BIZ UDPGothic','Noto Sans JP',sans-serif; font-weight:700; }
+.ln.r.keep { font-weight:500; } .ln.b { font-weight:700; } .ln.h { font-weight:800; }
 .c-ink { color:var(--ink); } .c-ink2 { color:var(--ink2); } .c-white { color:#fff; } .c-cyan { color:var(--cyan-text); }
 
 /* ---- CTAボタン（光彩・グラデ・文字を含めてカンプから書き出した画像） ---- */
@@ -84,7 +87,16 @@ html.parity .video { display:none; }
 .inst-photo { position:absolute; left:0; top:0; width:100%; height:calc(var(--u)*var(--ph)); object-fit:cover; object-position:50% 20%; }
 .inst-fade { object-fit:fill; pointer-events:none; }
 .inst-outline { position:absolute; left:calc(var(--u)*-0.5); top:calc(var(--u)*-0.7); width:calc(var(--u)*65.69); height:calc(var(--u)*188.07); pointer-events:none; }
-.dots i { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*425.2); width:calc(var(--u)*5.47); height:calc(var(--u)*5.47); border-radius:50%; background:#fff; }
+.inst-viewport { position:absolute; left:calc(var(--u)*8); top:calc(var(--u)*150); width:calc(var(--u)*286); height:calc(var(--u)*270); overflow:hidden; z-index:2; touch-action:pan-y; cursor:grab; -webkit-user-select:none; user-select:none; }
+.inst-viewport.is-drag { cursor:grabbing; }
+.inst-track { position:absolute; left:calc(var(--u)*-8); top:calc(var(--u)*-150); width:calc(var(--u)*300); height:100%; transform:translate3d(calc(var(--u)*var(--tx,0)),calc(var(--u)*var(--ty,0)),0); transition:transform .55s cubic-bezier(.22,.7,.2,1); will-change:transform; }
+.inst-viewport.is-drag .inst-track { transition:none; }
+.inst-name { position:absolute; left:calc(var(--u)*var(--nx)); top:calc(var(--u)*var(--ny)); width:calc(var(--u)*var(--nw)); height:calc(var(--u)*var(--nh)); max-width:none; z-index:3; pointer-events:none; }
+.dots .dot { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*425.2); width:calc(var(--u)*5.47); height:calc(var(--u)*5.47); padding:0; border:0; border-radius:50%; background:#fff; opacity:.4; cursor:pointer; z-index:4; transition:opacity .3s; }
+.dots .dot::after { content:""; position:absolute; inset:calc(var(--u)*-3); }
+.dots .dot[aria-current="true"] { opacity:1; }
+html.parity .dots .dot { opacity:1; }
+@media (prefers-reduced-motion:reduce) { .inst-track { transition:none; } }
 .guest-card { position:absolute; left:calc(var(--u)*var(--x)); top:calc(var(--u)*var(--y)); width:calc(var(--u)*var(--w)); height:calc(var(--u)*var(--h)); z-index:2; -webkit-clip-path:url(#clip-guest); clip-path:url(#clip-guest); }
 .guest-card img { width:100%; height:100%; object-fit:cover; }
 
@@ -277,28 +289,57 @@ if(/[?&]parity=1/.test(location.search)){
       <span class="ln b c-white" data-w="66.94" style="--x:204.89;--y:146.87;--s:9.36">ダンスを学べる</span>
     </p>
     <img class="abs z1" src="assets/watermark-instructor.png" alt="" style="--x:0;--y:157;--w:299.6;--h:103">
-    <!-- インストラクター写真：assets/instructor-〇〇.jpg を同名で上書きすると差し替わります -->
-    <div class="inst" style="--x:12.48;--y:227.93">
-        <div class="inst-clip" style="background:#6e767a"><img class="inst-photo" src="assets/instructor-haruka.jpg" alt="HARUKA（HIPHOP / GIRLS）" style="--ph:127.64"><img class="inst-photo inst-fade" src="assets/instructor-haruka-fade.png" alt="" style="--ph:127.64"></div>
-        <img class="inst-outline" src="assets/card-outline.svg" alt="">
+    <!-- インストラクター：横スライド（9名）。写真は assets/instructor-〇〇.jpg を同名で上書きすると差し替わります -->
+    <div class="inst-viewport" id="instSlider" role="group" aria-roledescription="carousel" aria-label="インストラクター">
+      <div class="inst-track">
+        <div class="inst" style="--x:12.48;--y:227.93">
+          <div class="inst-clip" style="background:#6e767a"><img class="inst-photo" src="assets/instructor-haruka.jpg" alt="HARUKA（HIPHOP / GIRLS）" style="--ph:127.64" draggable="false"><img class="inst-photo inst-fade" src="assets/instructor-haruka-fade.png" alt="" style="--ph:127.64" draggable="false"></div>
+          <img class="inst-outline" src="assets/card-outline.svg" alt="" draggable="false">
+          <img class="inst-name" src="assets/name-haruka.png" alt="" style="--nx:7.32;--ny:140.07;--nw:55.2;--nh:36.6" draggable="false">
+        </div>
+        <div class="inst" style="--x:83.52;--y:221.80">
+          <div class="inst-clip" style="background:#231f20"><img class="inst-photo" src="assets/instructor-suke.jpg" alt="SUKE（HIPHOP / ROCK）" style="--ph:186.87" draggable="false"><img class="inst-photo inst-fade" src="assets/instructor-suke-fade.png" alt="" style="--ph:186.87" draggable="false"></div>
+          <img class="inst-outline" src="assets/card-outline.svg" alt="" draggable="false">
+          <img class="inst-name" src="assets/name-suke.png" alt="" style="--nx:7.48;--ny:141.20;--nw:49.8;--nh:35.2" draggable="false">
+        </div>
+        <div class="inst" style="--x:154.56;--y:216.69">
+          <div class="inst-clip" style="background:#191b1f"><img class="inst-photo" src="assets/instructor-mao.jpg" alt="MAO（HIPHOP / GIRLS）" style="--ph:149.44" draggable="false"><img class="inst-photo inst-fade" src="assets/instructor-mao-fade.png" alt="" style="--ph:149.44" draggable="false"></div>
+          <img class="inst-outline" src="assets/card-outline.svg" alt="" draggable="false">
+          <img class="inst-name" src="assets/name-mao.png" alt="" style="--nx:7.44;--ny:141.51;--nw:50.4;--nh:35.2" draggable="false">
+        </div>
+        <div class="inst" style="--x:225.60;--y:210.56">
+          <div class="inst-clip" style="background:#231f20"><img class="inst-photo" src="assets/instructor-togo.jpg" alt="TOGO（HIPHOP / ROCK）" style="--ph:186.87" draggable="false"><img class="inst-photo inst-fade" src="assets/instructor-togo-fade.png" alt="" style="--ph:186.87" draggable="false"></div>
+          <img class="inst-outline" src="assets/card-outline.svg" alt="" draggable="false">
+          <img class="inst-name" src="assets/name-togo.png" alt="" style="--nx:7.60;--ny:141.24;--nw:49.8;--nh:35.4" draggable="false">
+        </div>
+        <div class="inst" style="--x:296.64;--y:204.77">
+          <div class="inst-clip" style="background:#6e767a"><img class="inst-photo" src="assets/instructor-shoichi.jpg" alt="SHOICHI（BREAKING）" style="--ph:127.64" draggable="false"><img class="inst-photo inst-fade" src="assets/instructor-haruka-fade.png" alt="" style="--ph:127.64" draggable="false"></div>
+          <img class="inst-outline" src="assets/card-outline.svg" alt="" draggable="false">
+          <img class="inst-name" src="assets/name-shoichi.png" alt="" style="--nx:7.30;--ny:140.10;--nw:60;--nh:42" draggable="false">
+        </div>
+        <div class="inst" style="--x:367.68;--y:198.98">
+          <div class="inst-clip" style="background:#231f20"><img class="inst-photo" src="assets/instructor-yuan.jpg" alt="YUAN（HIPHOP / GIRLS）" style="--ph:186.87" draggable="false"><img class="inst-photo inst-fade" src="assets/instructor-suke-fade.png" alt="" style="--ph:186.87" draggable="false"></div>
+          <img class="inst-outline" src="assets/card-outline.svg" alt="" draggable="false">
+          <img class="inst-name" src="assets/name-yuan.png" alt="" style="--nx:7.30;--ny:140.10;--nw:60;--nh:42" draggable="false">
+        </div>
+        <div class="inst" style="--x:438.72;--y:193.19">
+          <div class="inst-clip" style="background:#191b1f"><img class="inst-photo" src="assets/instructor-mikoto.jpg" alt="MIKOTO（HIPHOP / GIRLS）" style="--ph:149.44" draggable="false"><img class="inst-photo inst-fade" src="assets/instructor-mao-fade.png" alt="" style="--ph:149.44" draggable="false"></div>
+          <img class="inst-outline" src="assets/card-outline.svg" alt="" draggable="false">
+          <img class="inst-name" src="assets/name-mikoto.png" alt="" style="--nx:7.30;--ny:140.10;--nw:60;--nh:42" draggable="false">
+        </div>
+        <div class="inst" style="--x:509.76;--y:187.40">
+          <div class="inst-clip" style="background:#231f20"><img class="inst-photo" src="assets/instructor-yua.jpg" alt="YUA（HIPHOP / GIRLS）" style="--ph:186.87" draggable="false"><img class="inst-photo inst-fade" src="assets/instructor-togo-fade.png" alt="" style="--ph:186.87" draggable="false"></div>
+          <img class="inst-outline" src="assets/card-outline.svg" alt="" draggable="false">
+          <img class="inst-name" src="assets/name-yua.png" alt="" style="--nx:7.30;--ny:140.10;--nw:60;--nh:42" draggable="false">
+        </div>
+        <div class="inst" style="--x:580.80;--y:181.61">
+          <div class="inst-clip" style="background:#6e767a"><img class="inst-photo" src="assets/instructor-hana.jpg" alt="HANA（HIPHOP）" style="--ph:127.64" draggable="false"><img class="inst-photo inst-fade" src="assets/instructor-haruka-fade.png" alt="" style="--ph:127.64" draggable="false"></div>
+          <img class="inst-outline" src="assets/card-outline.svg" alt="" draggable="false">
+          <img class="inst-name" src="assets/name-hana.png" alt="" style="--nx:7.30;--ny:140.10;--nw:60;--nh:42" draggable="false">
+        </div>
       </div>
-      <img class="abs z3" src="assets/name-haruka.png" alt="" style="--x:19.8;--y:368;--w:55.2;--h:36.6;">
-    <div class="inst" style="--x:83.52;--y:221.8">
-        <div class="inst-clip" style="background:#231f20"><img class="inst-photo" src="assets/instructor-suke.jpg" alt="SUKE（HIPHOP / ROCK）" style="--ph:186.87"><img class="inst-photo inst-fade" src="assets/instructor-suke-fade.png" alt="" style="--ph:186.87"></div>
-        <img class="inst-outline" src="assets/card-outline.svg" alt="">
-      </div>
-      <img class="abs z3" src="assets/name-suke.png" alt="" style="--x:91;--y:363;--w:49.8;--h:35.2;">
-    <div class="inst" style="--x:154.56;--y:216.69">
-        <div class="inst-clip" style="background:#191b1f"><img class="inst-photo" src="assets/instructor-mao.jpg" alt="MAO（HIPHOP / GIRLS）" style="--ph:149.44"><img class="inst-photo inst-fade" src="assets/instructor-mao-fade.png" alt="" style="--ph:149.44"></div>
-        <img class="inst-outline" src="assets/card-outline.svg" alt="">
-      </div>
-      <img class="abs z3" src="assets/name-mao.png" alt="" style="--x:162;--y:358.2;--w:50.4;--h:35.2;">
-    <div class="inst" style="--x:225.6;--y:210.56">
-        <div class="inst-clip" style="background:#231f20"><img class="inst-photo" src="assets/instructor-togo.jpg" alt="TOGO（HIPHOP / ROCK）" style="--ph:186.87"><img class="inst-photo inst-fade" src="assets/instructor-togo-fade.png" alt="" style="--ph:186.87"></div>
-        <img class="inst-outline" src="assets/card-outline.svg" alt="">
-      </div>
-      <img class="abs z3" src="assets/name-togo.png" alt="" style="--x:233.2;--y:351.8;--w:49.8;--h:35.4;">
-    <div class="dots" aria-hidden="true"><i style="--x:125.9"></i><i style="--x:135.9"></i><i style="--x:146.8"></i><i style="--x:156.9"></i><i style="--x:167.6"></i></div>
+    </div>
+    <div class="dots" id="instDots"><button type="button" class="dot" style="--x:125.9" aria-label="インストラクター 1ページ目"></button><button type="button" class="dot" style="--x:135.9" aria-label="インストラクター 2ページ目"></button><button type="button" class="dot" style="--x:146.8" aria-label="インストラクター 3ページ目"></button><button type="button" class="dot" style="--x:156.9" aria-label="インストラクター 4ページ目"></button><button type="button" class="dot" style="--x:167.6" aria-label="インストラクター 5ページ目"></button></div>
   </section>
 
   <!-- ================= GUEST INSTRUCTOR ================= -->
@@ -344,15 +385,15 @@ if(/[?&]parity=1/.test(location.search)){
     </p>
     <a class="sns-card" href="https://www.instagram.com/dance_office_do/" target="_blank" rel="noopener" data-instagram="tagawa-nogata" style="--x:20.37" aria-label="田川校・直方校 Instagram">
         <span class="sns-label">田川校・直方校<br>Instagram</span>
-        <span class="sns-thumb"></span>
+        <span class="sns-thumb" style="background-image:url(assets/instagram-tagawa-nogata.jpg);background-position:50% 0"></span>
       </a>
       <a class="sns-card" href="https://www.instagram.com/danceofficeglow_/" target="_blank" rel="noopener" data-instagram="iizuka" style="--x:109.5" aria-label="飯塚校 Instagram">
         <span class="sns-label">飯塚校<br>Instagram</span>
-        <span class="sns-thumb"></span>
+        <span class="sns-thumb" style="background-image:url(assets/instagram-iizuka.jpg);background-position:50% 0"></span>
       </a>
       <a class="sns-card" href="https://www.instagram.com/danceoffice_miyawaka/" target="_blank" rel="noopener" data-instagram="miyawaka" style="--x:199.3" aria-label="宮若校 Instagram">
         <span class="sns-label">宮若校<br>Instagram</span>
-        <span class="sns-thumb"></span>
+        <span class="sns-thumb" style="background-image:url(assets/instagram-miyawaka.jpg);background-position:50% 0"></span>
       </a>
       
   </section>
@@ -435,6 +476,35 @@ if(/[?&]parity=1/.test(location.search)){
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   window.addEventListener('load', fit);
   window.addEventListener('resize', fit);
+
+  /* ---------- インストラクター：横スライド ---------- */
+  (function(){
+    var vp=document.getElementById('instSlider'); if(!vp) return;
+    var track=vp.querySelector('.inst-track'), cards=vp.querySelectorAll('.inst');
+    var dots=Array.prototype.slice.call(document.querySelectorAll('#instDots .dot'));
+    var PITCH=71.04, STEP=5.79, VISIBLE=4, max=Math.max(0,cards.length-VISIBLE), pos=0, timer=null;
+    var parity=/[?&]parity=1/.test(location.search);
+    var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function unit(){ return Math.min(window.innerWidth,480)/300; }
+    function place(p){ track.style.setProperty('--tx',(-PITCH*p).toFixed(3)); track.style.setProperty('--ty',(STEP*p).toFixed(3)); }
+    function dotOf(p){ return max ? Math.round(p/max*(dots.length-1)) : 0; }
+    function go(p){ pos=Math.max(0,Math.min(max,Math.round(p))); place(pos);
+      dots.forEach(function(d,i){ if(i===dotOf(pos)) d.setAttribute('aria-current','true'); else d.removeAttribute('aria-current'); }); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    function play(){ stop(); if(parity||reduce||!max) return; timer=setInterval(function(){ go(pos>=max?0:pos+1); },3500); }
+    dots.forEach(function(d,i){ d.addEventListener('click',function(){ go(Math.round(i/(dots.length-1)*max)); play(); }); });
+    var sx=0, sy=0, base=0, drag=false, decided=false, horiz=false;
+    vp.addEventListener('pointerdown',function(e){ if(e.pointerType==='mouse'&&e.button!==0) return; sx=e.clientX; sy=e.clientY; base=pos; drag=true; decided=false; horiz=false; stop(); });
+    window.addEventListener('pointermove',function(e){ if(!drag) return; var dx=e.clientX-sx, dy=e.clientY-sy;
+      if(!decided){ if(Math.abs(dx)<6&&Math.abs(dy)<6) return; decided=true; horiz=Math.abs(dx)>Math.abs(dy); if(horiz) vp.classList.add('is-drag'); }
+      if(!horiz) return; var p=base-dx/(PITCH*unit()); p=Math.max(-0.35,Math.min(max+0.35,p)); pos=p; place(p); });
+    function end(){ if(!drag) return; drag=false; vp.classList.remove('is-drag'); go(pos); play(); }
+    window.addEventListener('pointerup',end); window.addEventListener('pointercancel',end);
+    vp.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){ go(pos+1); play(); } if(e.key==='ArrowLeft'){ go(pos-1); play(); } });
+    vp.tabIndex=0;
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ es[0].isIntersecting?play():stop(); },{threshold:.3}).observe(vp); } else play();
+    go(0);
+  })();
 
   /* ---------- 動画：ファイルが無い間はポスター画像だけを見せる ---------- */
   var v = document.querySelector('.video-frame video');
