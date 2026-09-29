@@ -98,19 +98,25 @@ html.parity .video { display:none; }
 /* 0.5ptの枠線はレイアウトに影響しないよう疑似要素で描く */
 .tab::before, .sched::before { content:""; position:absolute; inset:0; border:calc(var(--u)*.5) solid var(--cyan); border-radius:inherit; pointer-events:none; }
 /* カンプ準拠：最終行が枠の下線に接する（カンプどおり）。余白を取りたい場合は --sched-bottom を 8 などに */
-.sched { --sched-bottom:-0.83; }
+.sched { --sched-bottom:9; }
+/* 飯塚校だけはカンプの実測値どおり（他校は均等なアキ） */
+.sched:has(#sched[data-school="iizuka"]) { --sched-bottom:-0.83; }
 .sched-list { margin-bottom:calc(var(--u)*var(--sched-bottom)); }
-.day { position:relative; padding-left:calc(var(--u)*54.34); margin-top:calc(var(--u)*var(--gap,5.9)); }
+.sched { display:flow-root; }
+.day { position:relative; padding-left:calc(var(--u)*54.34); margin-top:calc(var(--u)*var(--gap,8)); }
 .day:first-child { margin-top:0; }
+/* 1行だけの曜日でもバッジ同士が接しないよう、バッジの高さ分を確保 */
+.day { min-height:calc(var(--u)*20.4); display:flex; flex-direction:column; justify-content:center; }
+.row.is-long .cls, .row.is-long .time { letter-spacing:0; }
 /* 曜日ブロック間のアキ・バッジ位置はカンプの実測値（カンプ上で不揃いのためそのまま再現） */
-.day:nth-child(2) { --gap:10; --bo:-2.98; }
-.day:nth-child(3) { --gap:8.2; --bo:3.02; }
-.day:nth-child(4) { --gap:5.2; --bo:-2.58; }
-.day:nth-child(5) { --gap:4.8; --bo:1.12; }
-.day:nth-child(6) { --gap:1.5; --bo:-2.88; }
-.day:nth-child(1) { --bo:1.22; }
+#sched[data-school="iizuka"] .day:nth-child(2) { --gap:10; --bo:-2.98; }
+#sched[data-school="iizuka"] .day:nth-child(3) { --gap:8.2; --bo:3.02; }
+#sched[data-school="iizuka"] .day:nth-child(4) { --gap:5.2; --bo:-2.58; }
+#sched[data-school="iizuka"] .day:nth-child(5) { --gap:4.8; --bo:1.12; }
+#sched[data-school="iizuka"] .day:nth-child(6) { --gap:1.5; --bo:-2.88; }
+#sched[data-school="iizuka"] .day:nth-child(1) { --bo:1.22; }
 .badge { position:absolute; left:calc(var(--u)*11.94); top:50%; width:calc(var(--u)*31.45); height:calc(var(--u)*20.4); margin-top:calc(var(--u)*(var(--bo,0) - 10.2)); border-radius:calc(var(--u)*10.2); background:var(--cyan); color:#fff; font-size:calc(var(--u)*7.4); font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; letter-spacing:.05em; text-indent:.05em; }
-.row { display:flex; align-items:baseline; width:calc(var(--u)*166.9); font-size:calc(var(--u)*9); font-weight:700; line-height:calc(var(--u)*14); color:var(--ink); white-space:nowrap; font-feature-settings:"palt"; letter-spacing:.07em; }
+.row { display:flex; align-items:baseline; width:max-content; min-width:calc(var(--u)*166.9); max-width:calc(var(--u)*186); font-size:calc(var(--u)*9); font-weight:700; line-height:calc(var(--u)*14); color:var(--ink); white-space:nowrap; font-feature-settings:"palt"; letter-spacing:.07em; }
 .row .dots { flex:1 1 auto; min-width:calc(var(--u)*6); height:calc(var(--u)*1.6); margin:0 calc(var(--u)*1); align-self:center; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 6'%3E%3Ccircle cx='4.5' cy='3' r='1.9' fill='%23231f20'/%3E%3C/svg%3E"); background-size:calc(var(--u)*2.4) calc(var(--u)*1.6); background-position:0 50%; background-repeat:repeat-x; }
 .note { position:relative; z-index:3; margin:calc(var(--u)*7.83) 0 0 calc(var(--u)*31.3); width:calc(var(--u)*229.6); font-size:calc(var(--u)*9); font-weight:700; line-height:calc(var(--u)*14); color:var(--ink2); white-space:nowrap; font-feature-settings:"palt"; }
 .fitline { display:inline-block; }
@@ -316,7 +322,7 @@ if(/[?&]parity=1/.test(location.search)){
       <button class="tab" type="button" role="tab" aria-selected="false" data-school="tagawa">田川校</button><button class="tab" type="button" role="tab" aria-selected="false" data-school="nogata">直方校</button><button class="tab" type="button" role="tab" aria-selected="true" data-school="iizuka">飯塚校</button><button class="tab" type="button" role="tab" aria-selected="false" data-school="miyawaka">宮若校</button>
     </div>
     <div class="sched" role="tabpanel" aria-live="polite">
-      <div class="sched-list" id="sched">
+      <div class="sched-list" id="sched" data-school="iizuka">
           <div class="day"><span class="badge">MON</span><ul class="rows"><li class="row"><span class="cls">MAOジュニア中級</span><span class="dots" aria-hidden="true"></span><span class="time">18：50〜19：50</span></li><li class="row"><span class="cls">MAOジュニア上級</span><span class="dots" aria-hidden="true"></span><span class="time">20：00〜21：00</span></li></ul></div>
           <div class="day"><span class="badge">TUE</span><ul class="rows"><li class="row"><span class="cls">MAOキッズミニ</span><span class="dots" aria-hidden="true"></span><span class="time">18：20〜19：20</span></li><li class="row"><span class="cls">MAOキッズ</span><span class="dots" aria-hidden="true"></span><span class="time">19：30〜20：30</span></li><li class="row"><span class="cls">MAOジュニア中級</span><span class="dots" aria-hidden="true"></span><span class="time">20：40〜21：40</span></li></ul></div>
           <div class="day"><span class="badge">WED</span><ul class="rows"><li class="row"><span class="cls">HANAキッズ</span><span class="dots" aria-hidden="true"></span><span class="time">18:00〜19:00</span></li><li class="row"><span class="cls">HANAジュニア</span><span class="dots" aria-hidden="true"></span><span class="time">19：10〜20：10</span></li></ul></div>
@@ -336,16 +342,15 @@ if(/[?&]parity=1/.test(location.search)){
     <p class="txt">
       <span class="ln b c-cyan" data-w="122.04" style="--x:93.59;--y:77.55;--s:9.36">FOLLOW OUR MOVES.</span>
     </p>
-    <!-- Instagram の URL が決まったら href="#" を各アカウントのURLに書き換えてください -->
-    <a class="sns-card" href="#" data-instagram="tagawa-nogata" style="--x:20.37" aria-label="田川校・直方校 Instagram">
+    <a class="sns-card" href="https://www.instagram.com/dance_office_do/" target="_blank" rel="noopener" data-instagram="tagawa-nogata" style="--x:20.37" aria-label="田川校・直方校 Instagram">
         <span class="sns-label">田川校・直方校<br>Instagram</span>
         <span class="sns-thumb"></span>
       </a>
-      <a class="sns-card" href="#" data-instagram="iizuka" style="--x:109.5" aria-label="飯塚校 Instagram">
+      <a class="sns-card" href="https://www.instagram.com/danceofficeglow_/" target="_blank" rel="noopener" data-instagram="iizuka" style="--x:109.5" aria-label="飯塚校 Instagram">
         <span class="sns-label">飯塚校<br>Instagram</span>
         <span class="sns-thumb"></span>
       </a>
-      <a class="sns-card" href="#" data-instagram="miyawaka" style="--x:199.3" aria-label="宮若校 Instagram">
+      <a class="sns-card" href="https://www.instagram.com/danceoffice_miyawaka/" target="_blank" rel="noopener" data-instagram="miyawaka" style="--x:199.3" aria-label="宮若校 Instagram">
         <span class="sns-label">宮若校<br>Instagram</span>
         <span class="sns-thumb"></span>
       </a>
@@ -394,11 +399,15 @@ if(/[?&]parity=1/.test(location.search)){
   function find(id){ if(!data||!data.schools) return null; for(var i=0;i<data.schools.length;i++) if(data.schools[i].id===id) return data.schools[i]; return null; }
   function render(id){
     var s = find(id); if(!s) return;
+    box.setAttribute('data-school', id);
     box.innerHTML = (s.days||[]).map(function(d){
       return '<div class="day"><span class="badge">'+esc(d.day)+'</span><ul class="rows">'+
         (d.classes||[]).map(function(c){ return '<li class="row"><span class="cls">'+esc(c[0])+'</span><span class="dots" aria-hidden="true"></span><span class="time">'+esc(c[1])+'</span></li>'; }).join('')+
         '</ul></div>';
     }).join('');
+    /* 長い行は字間を詰めて枠の右に余裕を持たせる */
+    var lim = Math.min(window.innerWidth, 480) / 300 * 172;
+    Array.prototype.forEach.call(box.querySelectorAll('.row'), function(r){ if(r.getBoundingClientRect().width > lim) r.classList.add('is-long'); });
     tabs.forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-school')===id ? 'true':'false'); });
   }
   if(data && data.schools){

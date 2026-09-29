@@ -47,7 +47,7 @@ dance-office-LP/
 - クラス名と時間の間の「・・・」は **自動で入ります**。データには書かないでください。
 - `"`（ダブルクォーテーション）と `,`（カンマ）を消さないようにしてください。消えると表が表示されなくなります。
 - 行数が増減しても、枠の高さとその下のレイアウトは自動で追従します。
-- **現在、4校すべてにデザインデータの時間割（デザイン上は飯塚校タブ選択時の表示）を「仮」で入れています。** 各校の正しい内容に必ず打ち替えてください。
+- 4校ともデザインデータ(.ai)に記載の時間割を原文のまま入れています（2026-09-29）。
 
 ---
 
@@ -103,7 +103,7 @@ TOPの「無料体験受付中」ボタンのすぐ下に、16:9 の動画枠が
 
 | 項目 | 現状 | 書き換える場所 |
 |---|---|---|
-| Instagram のURL（3アカウント） | 未定のため `href="#"` | `index.html` の `data-instagram="tagawa-nogata"` / `"iizuka"` / `"miyawaka"` が付いた行の `href="#"` をURLに |
+| Instagram のURL（3アカウント） | 設定済み（田川・直方 dance_office_do ／ 飯塚 danceofficeglow_ ／ 宮若 danceoffice_miyawaka） | `index.html` の `data-instagram=` が付いた行の `href` を書き換え |
 | Instagram枠の中の画像 | グレーの空枠 | 同じ行の `<span class="sns-thumb"></span>` を `<span class="sns-thumb" style="background-image:url(assets/ファイル名.jpg)"></span>` に |
 | 無料体験・お問い合わせボタンのリンク先 | 仮でページ最下部（`#contact`）へ移動 | `index.html` の `href="#contact"`（3か所）をフォームのURLに |
 | 右上の三本線メニュー | 見た目のみ（開閉なし） | ― |
