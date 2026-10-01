@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Dance Office LP 更新マニュアル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1f2328;--sub:#5b6570;--line:#dfe4e8;--bg:#f5f7f8;--card:#fff;--accent:#1795ad;--accent-weak:#e6f6f9;--head:#151313;--warn:#fff8e1}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;font-size:16px;line-height:1.85}
+header{background:var(--head);color:#fff;padding:28px 16px 26px}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header .wrap{padding:0}
+.brand{font-size:13px;letter-spacing:.12em;color:#2ebad1;font-weight:700;margin:0 0 6px}
+h1{font-size:clamp(22px,5.4vw,30px);line-height:1.35;margin:0}
+.date{margin:10px 0 0;font-size:13px;color:#b9c2c9}
+main{padding:24px 0 56px}
+.lead{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:8px;padding:16px 18px;margin:0 0 20px}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:0 0 28px}
+.toc-h{font-weight:700;margin:0 0 4px;font-size:14px;color:var(--sub)}
+.toc ol{margin:0;padding-left:1.4em}.toc li{margin:2px 0}
+a{color:var(--accent);word-break:break-all}
+h2{font-size:clamp(19px,4.6vw,23px);line-height:1.4;margin:40px 0 14px;padding:0 0 10px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:10px;scroll-margin-top:12px}
+.num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;font-size:16px;font-weight:700}
+p{margin:12px 0}ol,ul{margin:12px 0;padding-left:1.5em}li{margin:6px 0}
+strong{background:linear-gradient(transparent 62%,#bfeaf2 62%);font-weight:700}
+figure{margin:18px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center}
+figure img{max-width:100%;height:auto;display:block;margin:0 auto;border-radius:4px}
+figcaption{font-size:13px;color:var(--sub);margin-top:8px}
+.tbl{margin:16px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--accent-weak);font-weight:700;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700}
+footer{border-top:1px solid var(--line);padding:18px 0 40px;font-size:13px;color:var(--sub);text-align:center}
+@media (max-width:640px){
+ body{font-size:15.5px}
+ table,thead,tbody,tr,td{display:block}thead{display:none}
+ tr{border-bottom:1px solid var(--line);padding:8px 0}tbody tr:last-child{border-bottom:0}
+ td{border:0;padding:3px 12px}
+ td:first-child{color:var(--accent)}
+ td:not(:first-child)::before{content:attr(data-label)"：";color:var(--sub);font-size:12.5px;font-weight:700}
+}
+@media print{body{background:#fff}header{background:#fff;color:#000;padding:0 0 8px}.brand{color:#000}.date{color:#333}.toc{display:none}figure,.tbl,.lead{break-inside:avoid}h2{break-after:avoid}a{color:#000}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><p class="brand">DANCE OFFICE</p><h1>Dance Office LP 更新マニュアル</h1><p class="date">2026年10月1日 版</p></div></header>
+<main><div class="wrap">
+<div class="lead">レッスンスケジュールと写真は、WordPress の管理画面「LPを編集」から変更できます。書き換えて「更新」を押すと、すぐに <a href="https://danceoffice.jp/" target="_blank" rel="noopener">https://danceoffice.jp/</a> に反映されます。プログラムの知識は要りません。</div>
+<nav class="toc" aria-label="目次"><p class="toc-h">目次</p><ol><li><a href="#s1">ログインして編集画面を開く</a></li><li><a href="#s2">レッスンスケジュールを変える</a></li><li><a href="#s3">写真を差し替える</a></li><li><a href="#s4">動画を差し替える</a></li><li><a href="#s5">保存してサイトで確かめる</a></li><li><a href="#s6">ここでは変えられないもの</a></li><li><a href="#s7">困ったとき</a></li></ol></nav>
+<h2 id="s1"><span class="num">1</span>ログインして編集画面を開く</h2>
+<ol><li>パソコンかスマホのブラウザで <a href="https://danceoffice.jp/wp-admin/" target="_blank" rel="noopener">https://danceoffice.jp/wp-admin/</a> を開きます。</li><li>お渡ししたユーザー名とパスワードを入れて「ログイン」を押します。</li><li>左のメニューの「<strong>LPを編集</strong>」を押します（スマホでは左上の三本線を押すとメニューが出ます）。</li></ol>
+<figure><a href="img/01_menu.png" target="_blank" rel="noopener"><img src="img/01_menu.png" width="806" height="291" alt="左メニューの「LPを編集」" loading="lazy"></a><figcaption>左メニューの「LPを編集」</figcaption></figure>
+<p>開いた画面の上から順に「レッスンスケジュール」「インストラクター写真」「スタジオ写真」「Instagram 枠の画像」「その他の写真・動画」の欄が並んでいます。</p>
+<figure><a href="img/02_editor.jpg" target="_blank" rel="noopener"><img src="img/02_editor.jpg" width="941" height="442" alt="編集画面の全体" loading="lazy"></a><figcaption>編集画面の全体</figcaption></figure>
+<p>本文を書く欄はありません。LPのデザインや文章は、ここから触っても崩れない作りになっています。</p>
+<h2 id="s2"><span class="num">2</span>レッスンスケジュールを変える</h2>
+<p>表の1行が、LPの1クラスです。校舎ごとにタブが分かれていて、タブの（　）内の数字はクラスの数です。</p>
+<figure><a href="img/03_schedule.png" target="_blank" rel="noopener"><img src="img/03_schedule.png" width="1254" height="474" alt="スケジュールの表と「行を追加」ボタン" loading="lazy"></a><figcaption>スケジュールの表と「行を追加」ボタン</figcaption></figure>
+<div class="tbl"><table><thead><tr><th>やりたいこと</th><th>操作</th></tr></thead><tbody><tr><td data-label="やりたいこと">校舎を選ぶ</td><td data-label="操作">表の上の「田川校」「直方校」「飯塚校」「宮若校」を押す</td></tr><tr><td data-label="やりたいこと">クラス名・時間を変える</td><td data-label="操作">その行の「クラス名」「時間」の欄を書き換える</td></tr><tr><td data-label="やりたいこと">曜日を変える</td><td data-label="操作">左端の曜日（MON〜SUN）を選び直す</td></tr><tr><td data-label="やりたいこと">クラスを増やす</td><td data-label="操作">表の下の「＋ ○○校に行を追加」を押す → 空の行が一番下にできるので、曜日・クラス名・時間を入れる</td></tr><tr><td data-label="やりたいこと">クラスを減らす</td><td data-label="操作">その行の「削除」を押す（確認が出たら「OK」）</td></tr><tr><td data-label="やりたいこと">同じ曜日の中で順番を入れ替える</td><td data-label="操作">「↑」「↓」で行を動かす</td></tr><tr><td data-label="やりたいこと">ページを開いたときに最初に出す校舎を変える</td><td data-label="操作">表の下の「ページを開いたときに最初に表示する校舎」を選ぶ（今は飯塚校）</td></tr></tbody></table></div>
+<p>覚えておくと便利なこと：</p>
+<ul><li>LPでは自動で曜日順（月→日）に並びます。追加した行を表の途中に動かす必要はありません。同じ曜日の中だけ、表の上から順に並びます。</li><li>クラス名と時間の間の「・・・」は自動で入ります。入力しないでください。</li><li>時間は今と同じ書き方（例：17：20〜18：20）にそろえると、見た目が揃います。</li><li>クラス名も時間も空の行は、保存すると消えます。片方だけ空の行は黄色く表示され、保存前に確認が出ます。</li><li>書き換えたら、最後に「更新」を押します（→ <a href="#s5">5</a>）。押さずに画面を閉じると、変更は保存されません。</li></ul>
+<h2 id="s3"><span class="num">3</span>写真を差し替える</h2>
+<p>写真は1枚ずつ「枠」になっていて、それぞれに「画像を選択」「初期に戻す」ボタンがあります。</p>
+<figure><a href="img/04_instructor.png" target="_blank" rel="noopener"><img src="img/04_instructor.png" width="1253" height="368" alt="インストラクター写真の枠" loading="lazy"></a><figcaption>インストラクター写真の枠</figcaption></figure>
+<ol><li>差し替えたい枠の「<strong>画像を選択</strong>」を押します。</li><li>新しい写真なら「ファイルを選択」を押して、パソコンやスマホの写真を選びます（画面にドラッグしても構いません）。一度上げた写真は「メディアライブラリ」に残るので、そこから選んでも構いません。</li><li>写真にチェックが付いたら、右下の「<strong>この画像を使う</strong>」を押します。</li><li>枠の写真が変わり、「変更済み（「更新」で反映）」と出ます。最後に「更新」を押します（→ <a href="#s5">5</a>）。</li></ol>
+<figure><a href="img/05_select.jpg" target="_blank" rel="noopener"><img src="img/05_select.jpg" width="941" height="442" alt="画像を選ぶ画面" loading="lazy"></a><figcaption>画像を選ぶ画面</figcaption></figure>
+<ul><li>元の写真に戻したいときは「<strong>初期に戻す</strong>」を押して「更新」。</li><li>縦横の比率が枠と違っても、自動で中央を切り抜いて表示します。インストラクターは、顔が少し上寄りの縦長の写真が収まりやすいです。</li><li>スマホで撮った写真をそのまま上げて構いません。表示用の大きさに自動で縮小されます。</li><li>名前やジャンルの文字（HARUKA / HIPHOP / GIRLS など）は写真とは別の画像なので、写真を替えても変わりません。</li></ul>
+<p>差し替えられる枠と、おすすめの写真：</p>
+<div class="tbl"><table><thead><tr><th>欄</th><th>枠</th><th>おすすめの写真</th></tr></thead><tbody><tr><td data-label="欄">インストラクター写真</td><td data-label="枠">HARUKA / SUKE / MAO / TOGO / SHOICHI / YUAN / MIKOTO / YUA / HANA</td><td data-label="おすすめの写真">縦長、520×1200px 程度</td></tr><tr><td data-label="欄">インストラクター写真</td><td data-label="枠">D.D（ゲスト）</td><td data-label="おすすめの写真">600×700px 程度</td></tr><tr><td data-label="欄">スタジオ写真</td><td data-label="枠">田川校 / 直方校 / 飯塚校 / 宮若校</td><td data-label="おすすめの写真">横長、812×577px</td></tr><tr><td data-label="欄">スタジオ写真</td><td data-label="枠">スタジオ外観（READY TO DANCE? の下）</td><td data-label="おすすめの写真">横長、1200×830px 程度</td></tr><tr><td data-label="欄">Instagram 枠の画像</td><td data-label="枠">田川校・直方校 / 飯塚校 / 宮若校</td><td data-label="おすすめの写真">スマホで撮った Instagram プロフィール画面のスクリーンショット</td></tr><tr><td data-label="欄">その他の写真・動画</td><td data-label="枠">いちばん上の写真（ファーストビュー）</td><td data-label="おすすめの写真">縦長、1200×1470px 程度</td></tr><tr><td data-label="欄">その他の写真・動画</td><td data-label="枠">ABOUT の写真（左・中央・右）</td><td data-label="おすすめの写真">縦長</td></tr><tr><td data-label="欄">その他の写真・動画</td><td data-label="枠">POINT の写真（上・下）</td><td data-label="おすすめの写真">横長、1200×540px 程度</td></tr><tr><td data-label="欄">その他の写真・動画</td><td data-label="枠">動画の再生前に出る画像</td><td data-label="おすすめの写真">横長、1280×720px</td></tr></tbody></table></div>
+<h2 id="s4"><span class="num">4</span>動画を差し替える</h2>
+<p>「その他の写真・動画」欄の「紹介動画（MP4）」で「動画を選択」を押し、写真と同じ手順で選びます。</p>
+<ul><li>形式は <strong>MP4、横長（16:9）</strong>。</li><li>容量は <strong>30MB以下</strong> に圧縮してから上げてください。撮ったままの大きな動画（4K など）は、スマホで再生が始まりません。</li><li>LPでは音なしで自動再生されます。見る人がスピーカーを押すと音が出ます。</li><li>再生前に出る画像も変える場合は、「動画の再生前に出る画像」に動画の最初の場面の画像を選びます。</li></ul>
+<h2 id="s5"><span class="num">5</span>保存してサイトで確かめる</h2>
+<p>変更が終わったら、画面右上（スマホでは画面の下のほう）の青い「<strong>更新</strong>」を押します。スケジュールと写真は、まとめて一度に保存できます。</p>
+<figure><a href="img/06_update.png" target="_blank" rel="noopener"><img src="img/06_update.png" width="442" height="376" alt="「更新」ボタン" loading="lazy"></a><figcaption>「更新」ボタン</figcaption></figure>
+<ol><li>画面の上に「固定ページを更新しました。」と出たら保存完了です。</li><li><a href="https://danceoffice.jp/" target="_blank" rel="noopener">https://danceoffice.jp/</a> を開いて、変わっているか確かめます。スケジュールは「LESSON」の校舎タブを押して見ます。</li><li>前のままに見えるときは、ページを再読み込みします（パソコン：Mac は ⌘ + Shift + R、Windows は Ctrl + F5。スマホ：ページを下に引っぱるか、アドレス欄の再読み込み）。</li></ol>
+<p>「変更をプレビュー」は使わなくて構いません。保存した内容しか表示されないためです。</p>
+<h2 id="s6"><span class="num">6</span>ここでは変えられないもの</h2>
+<p>次のものは管理画面からは変えられません。変更したいときは制作側にご連絡ください。</p>
+<ul><li>インストラクターの名札（名前・ジャンルの文字）、インストラクターの人数の増減</li><li>見出し・ロゴ・手書き風の文字・ボタン（画像で作っています）</li><li>ABOUT・POINT などの文章</li><li>各校の住所・電話番号、Instagram のリンク先、「無料体験」ボタンの行き先</li><li>「LESSON」の下の「※詳しいレッスン情報は各校へお問い合わせください」の一文</li><li>校舎の数（4校）や並び順</li></ul>
+<h2 id="s7"><span class="num">7</span>困ったとき</h2>
+<div class="tbl"><table><thead><tr><th>こんなとき</th><th>こうする</th></tr></thead><tbody><tr><td data-label="こんなとき">更新したのにサイトが変わらない</td><td data-label="こうする">「固定ページを更新しました。」が出たか確かめ、サイトを再読み込みする（→ <a href="#s5">5</a>）</td></tr><tr><td data-label="こんなとき">書き間違えた・消してしまった（まだ「更新」を押していない）</td><td data-label="こうする">そのまま画面を閉じるか、「LPを編集」を押し直す。保存前の状態に戻ります</td></tr><tr><td data-label="こんなとき">間違えたまま「更新」してしまった</td><td data-label="こうする">正しい内容に書き直して、もう一度「更新」。写真は「初期に戻す」でも戻せます。スケジュールを大きく消してしまったときは制作側へ</td></tr><tr><td data-label="こんなとき">写真の顔が枠から切れる</td><td data-label="こうする">顔が写真の上寄り～中央に来るようにトリミングしてから上げ直す</td></tr><tr><td data-label="こんなとき">動画がスマホで再生されない</td><td data-label="こうする">30MB以下に圧縮した MP4 を選び直す。直らなければ「初期に戻す」で元の動画に戻す</td></tr><tr><td data-label="こんなとき">ログインできない・パスワードを忘れた</td><td data-label="こうする">ログイン画面の「パスワードをお忘れですか？」から再設定するか、制作側へ</td></tr></tbody></table></div>
+<p>管理画面には「投稿」「外観」「プラグイン」など他のメニューもありますが、LPの更新には使いません。表示が崩れる原因になるので触らないでください。</p>
+</div></main>
+<footer><div class="wrap">Dance Office LP 更新マニュアル</div></footer>
+</body>
+</html>
