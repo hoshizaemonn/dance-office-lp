@@ -71,28 +71,33 @@ TOPの「無料体験受付中」ボタンのすぐ下に、16:9 の動画枠が
 ## 3. インストラクター写真を差し替える
 
 インストラクターは横スライド（9名・自動送り3.5秒・指で左右にスワイプ可）です。
-**SHOICHI / YUAN / MIKOTO / YUA / HANA の5名は、デザインデータと同じく他の方の写真を仮で入れています。** 必ず本人の写真に差し替えてください。
+ゲストインストラクターは D.D と NANA の2名です。
+
+**2026-10-03 時点の写真：**
+- インストラクター9名・ゲスト2名は、デザインデータ(.ai)の写真を反映済みです。
+- スタジオ写真は、田川校・直方校を反映済みです。**飯塚校・宮若校はまだ仮の写真（4校とも同じ写真）です。** 届き次第差し替えます。
+
 Instagram枠の画像は `assets/instagram-tagawa-nogata.jpg` / `instagram-iizuka.jpg` / `instagram-miyawaka.jpg`（2026-09-29時点のプロフィール画面）。同名で上書きすると差し替わります。
 
 `assets/` の中の次のファイルを、**同じファイル名で上書き** してください。
 
-| インストラクター | ファイル名 | 推奨サイズ（縦長） |
+| 写真 | ファイル名 | 推奨サイズ |
 |---|---|---|
-| HARUKA | `assets/instructor-haruka.jpg` | 518 × 1021 px |
-| SUKE | `assets/instructor-suke.jpg` | 424 × 1224 px |
-| MAO | `assets/instructor-mao.jpg` | 518 × 1196 px |
-| TOGO | `assets/instructor-togo.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
-| SHOICHI（★仮の写真） | `assets/instructor-shoichi.jpg` | 520 × 1200 px 程度 |
-| YUAN（★仮の写真） | `assets/instructor-yuan.jpg` | 520 × 1200 px 程度 |
-| MIKOTO（★仮の写真） | `assets/instructor-mikoto.jpg` | 520 × 1200 px 程度 |
-| YUA（★仮の写真） | `assets/instructor-yua.jpg` | 520 × 1200 px 程度 |
-| HANA（★仮の写真） | `assets/instructor-hana.jpg` | 520 × 1200 px 程度 |
-| SHOICHI | `assets/instructor-shoichi.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
-| YUAN | `assets/instructor-yuan.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
-| MIKOTO | `assets/instructor-mikoto.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
-| YUA | `assets/instructor-yua.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
-| HANA | `assets/instructor-hana.jpg` | 298 × 861 px（650 × 1870 px 程度まで大きくしてOK） |
+| HARUKA | `assets/instructor-haruka.jpg` | 縦長 518 × 1021 px |
+| SUKE | `assets/instructor-suke.jpg` | 縦長 424 × 1224 px |
+| MAO | `assets/instructor-mao.jpg` | 縦長 518 × 1196 px |
+| TOGO | `assets/instructor-togo.jpg` | 縦長 520 × 1500 px 程度 |
+| SHOICHI | `assets/instructor-shoichi.jpg` | 縦長 520 × 1500 px 程度 |
+| YUAN | `assets/instructor-yuan.jpg` | 縦長 520 × 1500 px 程度 |
+| MIKOTO | `assets/instructor-mikoto.jpg` | 縦長 520 × 1500 px 程度 |
+| YUA | `assets/instructor-yua.jpg` | 縦長 520 × 1500 px 程度 |
+| HANA | `assets/instructor-hana.jpg` | 縦長 520 × 1500 px 程度 |
 | D.D（ゲスト） | `assets/guest-dd.jpg` | 600 × 700 px 程度 |
+| NANA（ゲスト） | `assets/guest-nana.jpg` | 600 × 700 px 程度 |
+| 田川校スタジオ | `assets/studio-tagawa.jpg` | 横長 1200 × 853 px 程度 |
+| 直方校スタジオ | `assets/studio-nogata.jpg` | 横長 1200 × 853 px 程度 |
+
+- 名前・ジャンルの文字（HARUKA / HIPHOP など）と、カード下のぼかしは別の画像です。写真を替えても変わりません。
 
 - 形式は JPG。縦横の比率が違っても、枠に合わせて自動で中央を切り抜いて表示します（顔が上寄りに来る写真が収まりやすいです）。
 - 1枚あたり **300KB以下** を目安に、書き出し時に圧縮してください。
@@ -133,3 +138,11 @@ Instagram枠の画像は `assets/instagram-tagawa-nogata.jpg` / `instagram-iizuk
 - 破れ紙の境界・カードの形は、カンプのベクターデータをそのまま SVG にしています。
 - URLの末尾に `?parity=1` を付けると動画枠を隠し、カンプと同じ高さで表示します（カンプとの突き合わせ確認用）。
 - スケジュール枠内の「曜日ブロック間のアキ」と「曜日バッジの上下位置」はカンプの実測値をそのまま再現しています（カンプ上で不揃い）。揃えたい場合は `index.html` の `.day:nth-child(n)` の指定を削除すると均等になります。
+
+## 動画について（2026-09-30 追記）
+
+- 掲載中の動画は `assets/top.mp4`（960×540・約81秒・約19MB）。元データ（4K・734MB）をWeb用に圧縮したものです。
+- 差し替えるときは、同じファイル名 `assets/top.mp4` で上書きしてください。**30MB以下**を目安に圧縮してください（4Kのままでは再生が始まりません）。
+- 再生前に表示される画像は `assets/video-poster.jpg`（動画の冒頭のコマ）。
+- 自動再生は消音です。操作バーのスピーカーを押すと音が出ます。
+- `top.mp4` は容量の都合でソース管理（git）には含めていません。サーバーへは必ず一緒にアップロードしてください。
