@@ -124,7 +124,7 @@ Instagram枠の画像は `assets/instagram-tagawa-nogata.jpg` / `instagram-iizuk
 |---|---|---|
 | Instagram のURL（3アカウント） | 設定済み（田川・直方 dance_office_do ／ 飯塚 danceofficeglow_ ／ 宮若 danceoffice_miyawaka） | `index.html` の `data-instagram=` が付いた行の `href` を書き換え |
 | Instagram枠の中の画像 | グレーの空枠 | 同じ行の `<span class="sns-thumb"></span>` を `<span class="sns-thumb" style="background-image:url(assets/ファイル名.jpg)"></span>` に |
-| 無料体験・お問い合わせボタンのリンク先 | 仮でページ最下部（`#contact`）へ移動 | `index.html` の `href="#contact"`（3か所）をフォームのURLに |
+| 無料体験・お問い合わせボタンのリンク先 | 2026-10-03 から電話発信（`tel:080-3731-8442`）。WordPress 版はテーマ v1.0.4 で反映済み | フォームができたら `href="tel:080-3731-8442"`（3か所）をフォームのURLに |
 | 右上の三本線メニュー | 見た目のみ（開閉なし） | ― |
 
 電話番号は `tel:080-3731-8442` でタップ発信できるようになっています。
